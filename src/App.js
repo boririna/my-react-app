@@ -1,8 +1,11 @@
 import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Title from './components/Title'
+import Modal from './components/Modal'
+
 
 function App() {
+  const [showModal, setShowModal] = useState(true)
   const [showEvents, setShowEvents] = useState(true)
   const [events, setEvents] = useState(
     [
@@ -12,6 +15,10 @@ function App() {
     ])
 
   console.log(showEvents)
+
+  const handleClose = () => {
+    setShowModal(false)
+  }
 
   const handleClick = (id) => {
     setEvents((prevEvents) => {
@@ -35,11 +42,19 @@ function App() {
         <button onClick={() => setShowEvents(true)}>Show events</button>
       </div>)}
       {showEvents && events.map((event, index) =>(
-        <div key={event.id}>
+        <React.Fragment key={event.id}>
           <h2>{index} - {event.title}</h2>
           <button onClick={() => handleClick(event.id)}>Delete event</button>
-        </div>
+        </React.Fragment>
       ))}
+      {/* <Modal>
+        <h2>10% Off Coupon Code!!</h2>
+        <p>Use the code NINJA10 at the checkout.</p>
+      </Modal> */}
+      {showModal && <Modal handleClose={handleClose}>
+        <h2>Terms and Conditions</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error odit nam et reprehenderit quibusdam temporibus officia dolorum quo sint nemo quis, laborum, quasi nisi fugit praesentium debitis repudiandae! Sapiente, omnis.</p>
+      </Modal>}
     </div>
   );
 }
