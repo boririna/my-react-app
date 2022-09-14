@@ -7,10 +7,19 @@
   background: rgba(27, 3, 49, 0.6);
 }
 .modal {
-  text-align: center;
   padding: 30px;
   max-width: 480px;
   margin: 200px auto;
   background: rgb(255, 255, 255);
   border-radius: 10px;
+}
+
+.modal h2 {
+  border-bottom: 1px solid #ddd;
+}
+
+.modal .sales-btn {
+  border: 3px solid #333;
+  font-size: 18px;
+  text-transform: uppercase;
 }

@@ -34,7 +34,6 @@ function App() {
   return (
     <div className="App">
       <Title title="Some title" subtitle={sub}/>
-      <Title title="Another title" subtitle="Another subtitle"/>
 
       {showEvents && (<div>
         <button onClick={() => setShowEvents(false)}>Hide events</button>
@@ -55,7 +54,7 @@ function App() {
         <h2>10% Off Coupon Code!!</h2>
         <p>Use the code NINJA10 at the checkout.</p>
       </Modal> */}
-      {showModal && <Modal handleClose={handleClose}>
+      {showModal && <Modal handleClose={handleClose} isSalesModal={true}>
         <h2>Terms and Conditions</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error odit nam et reprehenderit quibusdam temporibus officia dolorum quo sint nemo quis, laborum, quasi nisi fugit praesentium debitis repudiandae! Sapiente, omnis.</p>
       </Modal>}
