@@ -9,15 +9,14 @@ import NewEventForm from './components/NewEventForm';
 function App() {
   const [showModal, setShowModal] = useState(false)
   const [showEvents, setShowEvents] = useState(true)
-  const [events, setEvents] = useState(
-    [
-      {title: "some event", id: 1},
-      {title: "some other event", id: 2},
-      {title: "one more event", id: 3}
-    ])
+  const [events, setEvents] = useState([])
 
-  console.log(showEvents)
-
+  const addEvent = (event) => {
+    setEvents((prevEvents) => {
+      return [...prevEvents, event]
+    })
+    setShowModal(false)
+  }
   const handleClose = () => {
     setShowModal(false)
   }
@@ -56,7 +55,7 @@ function App() {
         <p>Use the code NINJA10 at the checkout.</p>
       </Modal> */}
       {showModal && <Modal handleClose={handleClose} isSalesModal={true}>
-        <NewEventForm />
+        <NewEventForm addEvent={addEvent}/>
       </Modal>}
       <div>
         <button onClick={() => setShowModal(true)}>Open modal</button>
